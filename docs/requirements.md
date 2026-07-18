@@ -29,9 +29,9 @@ title: 需求列表
 **需求目标：** 建立一套以需求为中心的协作文档体系
 
 **文档：**
-- [需求文档](https://github.com/Cray-Bear/kouol/blob/main/doc/requirements/R-001/requirement.md)
-- [开发日志](https://github.com/Cray-Bear/kouol/blob/main/doc/requirements/R-001/log.md)
-- [复盘文档](https://github.com/Cray-Bear/kouol/blob/main/doc/requirements/R-001/review.md)
+- [📖 需求文档](r-001-requirement.html)
+- [📖 开发日志](r-001-log.html)
+- [📂 源文件](https://github.com/Cray-Bear/kouol/tree/main/doc/requirements/R-001)
 
 **任务：**
 - ✅ T-001 初始化 Git 仓库并推送 GitHub
@@ -49,6 +49,42 @@ title: 需求列表
 - 设计需要用户反馈驱动，不要试图一次到位
 - 日志跟着需求走，不是独立存在
 - 每次操作实时记录，不做事后总结
+
+---
+
+### ✔️ R-002 · 搭建项目博客 & 完善介绍
+
+- **优先级：** P1
+- **创建：** 2026-07-19
+- **完成：** 2026-07-19
+- **来源想法：** I-002
+
+**需求目标：** 搭建博客网站，完善项目介绍
+
+**文档：**
+- [📖 需求文档](r-002-requirement.html)
+- [📖 技术文档](r-002-technical.html)
+- [📖 开发日志](r-002-log.html)
+- [📂 源文件](https://github.com/Cray-Bear/kouol/tree/main/doc/requirements/R-002)
+
+**任务：**
+- ✅ T-005 搭建 Jekyll 博客框架
+- ✅ T-006 创建 R-002 任务文档
+- ✅ T-007 配置 GitHub Pages
+- ✅ T-008 验证博客部署
+- ✅ T-009 创建 README.md 项目介绍
+- ✅ T-010 创建博客页面
+
+**关键成果：**
+- 基于 GitHub Pages + Jekyll 搭建极简博客
+- 博客部署到 https://cray-bear.github.io/kouol/
+- 创建了首页、需求列表、想法墙、关于页
+- 项目 README.md 完善
+
+**经验教训：**
+- GitHub Pages 有两种模式：workflow（需 Actions 文件）和 legacy（直接部署分支）
+- 首次配置要用 legacy 模式，否则 404
+- 需求文档和开发日志应在博客内渲染，而非链接到 GitHub 原始文件
 
 ---
 

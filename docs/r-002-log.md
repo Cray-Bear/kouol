@@ -1,17 +1,17 @@
-# R-002 开发日志
+---
+layout: default
+title: R-002 开发日志
+---
+
+[← 返回需求列表](requirements.html)
+
+# R-002 · 开发日志
 
 > **当前状态：** ✔️ 已完成 | **进度：** 6/6 任务完成
+> **需求目标：** 搭建项目博客，完善项目介绍
 > **博客地址：** https://cray-bear.github.io/kouol/
 
 ---
-
-## 2026-07-19 18:00 — 博客页面渲染改进
-
-- 问题：需求文档和开发日志链接到 GitHub 原始 .md 文件，没有博客样式，很丑
-- 解决：在 docs/ 下创建 Jekyll 页面，用博客主题渲染所有需求文档和日志
-- 新增页面：r-001-requirement, r-001-log, r-002-requirement, r-002-technical, r-002-log
-- 更新 requirements.md 链接指向博客内部页面
-- 同步更新 R-001 和 R-002 的需求列表展示
 
 ## 2026-07-19 17:30 — T-007 完成：配置 GitHub Pages
 
@@ -80,4 +80,5 @@
 ---
 
 **会话开始：** 2026-07-19 14:00
-**需求目标：** 搭建项目博客，完善项目介绍
+
+[📖 需求文档](r-002-requirement.html) · [📖 技术文档](r-002-technical.html) · [📂 源文件](https://github.com/Cray-Bear/kouol/tree/main/doc/requirements/R-002)
