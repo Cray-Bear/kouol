@@ -2,6 +2,28 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 项目定位
+
+**kouol 是一个纯 AI 驱动的教学项目。** 全部开发过程由 AI（主要是 Claude）完成，目标是记录 AI 开发的真实过程 —— 包括做了什么、怎么做的、踩了哪些坑、AI 哪里做对了、哪里翻车了。
+
+这个项目的产出**不只是代码本身**，更是 `doc/dev-log/` 下的完整开发日志，供其他想用 AI 做开发的人参考。
+
+## 开发日志约定（必须遵守）
+
+**每次开发会话结束前，AI 必须主动生成或追加当天的日志。** 不写日志 = 这次开发不算完成。
+
+日志规范：
+- **位置：** `doc/dev-log/YYYY-MM-DD.md`（一天多篇用 `-02`、`-03` 后缀）
+- **模板：** 见 [`doc/dev-log/TEMPLATE.md`](doc/dev-log/TEMPLATE.md)
+- **索引：** 新日志写完要更新 [`doc/dev-log/README.md`](doc/dev-log/README.md) 的表格
+- **重点内容：**
+  1. **踩坑** —— 现象、排查过程、根因、解决方案、给未来 AI 的提示
+  2. **AI 协作经验** —— 什么 prompt 有效、AI 在哪里翻车、哪些任务适合 / 不适合 AI
+- **不要写成：** 代码搬运、流水账、空洞的成功汇报
+- **要写成：** 让未来读到这篇日志的人（或 AI）能避开同样的坑
+
+**日志完成后，单独提交一次：** `git commit -m "docs: add dev log YYYY-MM-DD"`。
+
 ## 项目概述
 
 HarmonyOS 手机应用，目标 API 22（HarmonyOS 6.0.2），Stage 模型。Bundle 名称：`com.fty1.kouol`。使用 DevEco Studio / Hvigor 构建。当前为脚手架模板——单 `entry` 模块，包含 Hello World 页面。
