@@ -7,7 +7,7 @@ theme: jekyll-theme-minimal
 
 # 注入自定义 CSS 到 <head>
 head: |
-  <link rel="stylesheet" href="/kouol/assets/css/style.css">
+  <link rel="stylesheet" href="https://cray-bear.github.io/kouol/assets/css/kouol.css">
 
 markdown: kramdown
 kramdown:
