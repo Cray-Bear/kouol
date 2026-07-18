@@ -206,6 +206,31 @@ hvigorw clean
 > [System.IO.File]::WriteAllText("xxx.ps1", $c, [System.Text.UTF8Encoding]::new($true))
 > ```
 
+## 设计师 Agent
+
+本项目配备全局设计师 Skill (`kouol-designer`)，负责所有 UI/视觉/交互相关的工作。
+
+### 核心文档
+| 文档 | 路径 | 说明 |
+|------|------|------|
+| 设计宪法 | `doc/design-constitution.md` | 最高设计准则，所有设计决策必须遵守 |
+| 组件规范速查 | `doc/design-rules.md` | 色彩/字体/间距/组件的速查表 |
+| 设计师 Skill | `~/.claude/skills/kouol-designer/SKILL.md` | 设计师的执行手册（全局 Skill） |
+
+### 什么时候调用设计师
+- 任何涉及**页面设计、修改、创建**的任务
+- 涉及**色彩、字体、布局、图标**的决策
+- **Figma 操作**（创建页面、上传素材、截图验证）
+- **需求中涉及 UI/展示**的部分
+- **设计评审**（检查一致性、质量把关）
+
+### Figma 资产
+- **File Key**: `Df566aqg3tPt8BAvKMwIFS`
+- **当前页面**: p001 (Home) ~ p009 (Payment)，共 9 个页面
+- **设计规范**: 375×812 屏幕，Inter 字体，Lucide SVG 图标
+
+---
+
 ## 代码检查
 
 ```powershell

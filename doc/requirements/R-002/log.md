@@ -1,9 +1,24 @@
 # R-002 开发日志
 
-> **当前状态：** 🚧 执行中 | **进度：** 4/6 任务完成
-> **下一步：** T-007 配置 GitHub Pages（需用户手动操作）
+> **当前状态：** ✔️ 已完成 | **进度：** 6/6 任务完成
+> **博客地址：** https://cray-bear.github.io/kouol/
 
 ---
+
+## 2026-07-19 17:30 — T-007 完成：配置 GitHub Pages
+
+- 通过 gh CLI API 启用 GitHub Pages
+- 配置 source 为 main 分支 /docs 目录
+- 触发构建，等待完成
+- 踩坑：首次用 "workflow" 模式但没有 workflow 文件，改为 "legacy" 模式成功
+- ✅ T-007 完成
+
+## 2026-07-19 17:35 — T-008 完成：验证博客部署
+
+- curl 验证 https://cray-bear.github.io/kouol/ 返回 HTTP 200
+- 部署成功，博客可访问
+- ✅ T-008 完成
+- ✅ R-002 全部完成
 
 ## 2026-07-19 17:00 — 增加设计确认强约定
 
