@@ -50,10 +50,11 @@ kouol/
 
 ## 当前进展
 
-访问 [需求列表](requirements.md) 查看所有需求的进度。
+访问 [需求列表](requirements.html) 查看所有需求的进度。
 
 最新完成的需求：
-- ✅ [R-001 建立项目协作机制](https://github.com/Cray-Bear/kouol/tree/main/doc/requirements/R-001) — 建立了完整的想法 → 需求 → 任务 → 日志协作体系
+- ✅ [R-002 搭建项目博客 & 完善介绍](r-002-requirement.html) — 基于 GitHub Pages + Jekyll 搭建极简博客，完善项目介绍
+- ✅ [R-001 建立项目协作机制](r-001-requirement.html) — 建立了完整的想法 → 需求 → 任务 → 日志协作体系
 
 ## 如何学习这个项目
 
@@ -72,9 +73,9 @@ kouol/
 
 ## 博客内容
 
-- [需求列表](requirements.md) — 所有需求及进度
-- [想法墙](ideas.md) — 所有想法的集合
-- [关于](about.md) — 项目背景和 AI 协作方式
+- [需求列表](requirements.html) — 所有需求及进度
+- [想法墙](ideas.html) — 所有想法的集合
+- [关于](about.html) — 项目背景和 AI 协作方式
 
 ## 链接
 
