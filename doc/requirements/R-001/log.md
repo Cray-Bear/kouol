@@ -5,6 +5,12 @@
 
 ---
 
+## 2026-07-19 15:30 — 推送到 GitHub
+
+- `git push` 直接推送失败（Connection was reset）
+- 使用本地代理 `http://127.0.0.1:7897` 重试成功
+- commit `53c5e5d` 已推送到 https://github.com/Cray-Bear/kouol
+
 ## 2026-07-19 15:00 — T-004 完成：将协作机制写入 CLAUDE.md
 
 - 重写了 CLAUDE.md 的协作机制部分
