@@ -13,6 +13,14 @@ title: R-002 开发日志
 
 ---
 
+## 2026-07-19 19:00 — CSS 注入踩坑
+
+- 问题 1：用 `assets/css/style.css` 命名，和 jekyll-theme-minimal 默认样式同名，被覆盖
+- 修复：重命名为 `kouol.css`
+- 问题 2：用 `_config.yml` 的 `head` 参数注入 CSS，jekyll-theme-minimal 不支持
+- 修复：改用 `_includes/head-custom.html`（主题预留的注入点）
+- **教训：** GitHub Pages 主题有自己的约定，先查主题文档再动手
+
 ## 2026-07-19 18:30 — 博客自定义样式
 
 - 创建 `docs/assets/css/style.css`，应用设计建议的品牌样式
