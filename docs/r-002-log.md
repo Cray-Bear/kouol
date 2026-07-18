@@ -13,6 +13,14 @@ title: R-002 开发日志
 
 ---
 
+## 2026-07-19 18:00 — 博客页面渲染改进
+
+- 问题：需求文档和开发日志链接到 GitHub 原始 .md 文件，没有博客样式，很丑
+- 解决：在 docs/ 下创建 Jekyll 页面，用博客主题渲染所有需求文档和日志
+- 新增页面：r-001-requirement, r-001-log, r-002-requirement, r-002-technical, r-002-log
+- 更新 requirements.md 链接指向博客内部页面
+- 同步更新 R-001 和 R-002 的需求列表展示
+
 ## 2026-07-19 17:30 — T-007 完成：配置 GitHub Pages
 
 - 通过 gh CLI API 启用 GitHub Pages
