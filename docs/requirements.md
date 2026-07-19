@@ -90,7 +90,20 @@ title: 需求列表
 
 ## 执行中的需求
 
-*（暂无）*
+### 🚧 R-003 · 需求讨论页（"群聊"界面）
+
+- **优先级：** P1
+- **创建：** 2026-07-19
+- **状态：** 评估中
+- **来源想法：** 用户提出
+
+**需求目标：** 每个需求一个讨论群，能看到各 Agent 的讨论过程
+
+**文档：**
+- [💬 讨论群](discussion.html?r=R-003) — 查看 Agent 讨论记录（群聊界面）
+- [📂 源文件](https://github.com/Cray-Bear/kouol/tree/main/doc/requirements/R-003)
+
+**当前状态：** 各方已完成初步评估，待用户回答澄清问题
 
 ## 待启动的需求
 
@@ -107,6 +120,7 @@ title: 需求列表
 | `README.md` | 需求主页（状态、来源、索引） | 概览 |
 | `requirement.md` | 需求文档（what & why） | 了解背景和目标 |
 | `technical.md` | 技术文档（how） | 了解实现方案 |
+| `discussion.md` | Agent 讨论记录 | 了解各方观点 |
 | `log.md` | 开发日志（newest first） | 了解执行过程 |
 | `review.md` | 复盘文档 | 了解经验教训 |
 | `T-xxx.md` | 任务文档 | 了解具体任务 |

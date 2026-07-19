@@ -107,4 +107,172 @@
 
 ---
 
+## 2026-07-19 — 讨论全留痕机制建立
+
+### 背景
+- 用户明确要求：所有 Agent 之间的讨论需要记录，用户会审阅
+- 同时发现 Skill 文件的 3 个小问题需要修复
+
+### 变更内容
+
+| 变更 | 说明 |
+|------|------|
+| 新增 `doc/discussion-format.md` | 标准讨论记录格式（类型/参与方/各方发言/结论/索引） |
+| 8 个 Skill 新增"讨论记录规则"章节 | 每个角色都有讨论记录的强制义务和典型场景 |
+| Architect Skill | 三方讨论格式改为引用标准格式，避免重复 |
+| CLAUDE.md 目录结构 | 新增 `discussion.md` 到需求目录模板 |
+| CLAUDE.md 流转图 | 补充 discussion.md 和审计环节 |
+
+### 顺带修复的问题
+
+| 问题 | 位置 | 修复 |
+|------|------|------|
+| PM Skill 拼写错误 | `tester` → `🧪 Tester` | 已修正 |
+| Tester Skill 缺操作手段 | 设计对照只说"对比 Figma" | 补充 `get_screenshot` 截图对比方式 |
+| Designer Skill 设计风格备忘区 | 引用了不存在的区域 | 在 Skill 中明确备忘区格式 |
+
+### 讨论记录的豁免规则
+- 快速确认（"可以"/"收到"）→ 不记录
+- 纯格式修正 → 不记录
+- 单方通知（"我完成了 T-001"）→ 不记录
+- **判断标准：** 有"观点交换"就记录，只有"信息传递"不记录
+
+### 更新的文件
+- `doc/discussion-format.md`（新建）
+- `doc/lifecycle.md`（新建 — 需求全生命周期甘特图 + Agent 参与矩阵）
+- `~/.claude/skills/kouol-strategist/SKILL.md`
+- `~/.claude/skills/kouol-architect/SKILL.md`
+- `~/.claude/skills/kouol-pm/SKILL.md`
+- `~/.claude/skills/kouol-developer/SKILL.md`
+- `~/.claude/skills/kouol-tester/SKILL.md`
+- `~/.claude/skills/kouol-reviewer/SKILL.md`
+- `~/.claude/skills/kouol-auditor/SKILL.md`
+- `~/.claude/skills/kouol-designer/SKILL.md`
+- `CLAUDE.md`（目录结构 + 流转图）
+
+---
+
+## 2026-07-19 — Auditor 角色升级：协作基础设施设计师
+
+### 背景
+- 用户指出 Auditor 还有一个重要职责：设计模板和流程
+- 核心目的：服务协作、提升效率、减少重复工作、减少沟通成本
+- 关键平衡：效率 vs 跑偏风险
+
+### 变更内容
+
+| 变更 | 说明 |
+|------|------|
+| 角色定位升级 | 从"事后审查者"→"免疫系统 + 协作基础设施设计师" |
+| 新增"模板与流程设计" | 列为 Auditor 核心职责（第一位） |
+| 新增"流程设计原则"章节 | 设计哲学 + 核心平衡 + 模板管理 + 检验标准 |
+| 模板管理清单 | 列出 9 个核心模板及其服务的协作场景 |
+| 模板设计检验 5 条 | 认知成本 / 重复沟通 / 过度设计 / 效率 / 跑偏防护 |
+| 反模式黑名单 | 4 条流程设计反模式 |
+| 成功标准 | "没人抱怨模板" + 填写耗时趋势下降 |
+
+### 核心理念
+
+```
+好的流程让人感觉不到流程的存在。
+模板的目的是减少认知负担，不是增加。
+判断标准：这个检查点是"防止灾难"还是"让人安心"？
+  - 防止灾难 → 保留
+  - 只是让人安心 → 删除
+```
+
+### 更新的文件
+- `~/.claude/skills/kouol-auditor/SKILL.md`
+
+---
+
+## 2026-07-19 — 工作流规范体系建立
+
+### 背景
+- 用户要求：给大家指定工作流、协作流程
+- 基于实践沉淀为正式规范
+- Auditor 作为"协作基础设施设计师"的第一批产出
+
+### 新增文档
+
+| 文档 | 内容 | 使用者 |
+|------|------|--------|
+| `doc/coding-standards.md` | 编码规范（命名/组件/状态/资源/提交/质量清单） | 💻 Developer + 📝 Reviewer |
+| `doc/testing-workflow.md` | 测试开发流程（测试流程/Bug 管理/打回放行/测试思维） | 🧪 Tester + 💻 Developer + 📋 PM |
+| `doc/collaboration-guide.md` | 协作流程（交接协议/协作场景/沟通格式/各角色检查清单） | 所有 Agent |
+
+### 已有文档（设计规范已完善）
+
+| 文档 | 状态 |
+|------|------|
+| `doc/design-constitution.md` | ✅ 已完善 |
+| `doc/design-rules.md` | ✅ 已完善 |
+| `doc/Figma操作指南.md` | ✅ 已完善 |
+
+### 规范体系全景
+
+```
+doc/
+├── governance.md              # 治理手册（七权模型）
+├── lifecycle.md               # 需求全生命周期
+├── collaboration-guide.md     # ← 协作流程指南（新建）
+├── coding-standards.md        # ← 编码规范（新建）
+├── testing-workflow.md        # ← 测试开发流程（新建）
+├── design-constitution.md     # 设计宪法
+├── design-rules.md            # 设计规则速查
+├── discussion-format.md       # 讨论记录格式
+└── scorecard.md               # 记分板
+```
+
+### 核心设计原则
+
+```
+1. 规范是为了减少认知负担，不是增加
+2. 模板是为了防止出错，不是展示"我们很规范"
+3. 只在"跑偏代价大"的地方设卡
+4. 规范是活文档，随实践持续优化
+5. 修改需经 Auditor 审批
+```
+
+---
+
+## 2026-07-19 — 委托模型：Agent 专注内容，Auditor 管合规
+
+### 背景
+- 用户提出思路：每个 Agent 专注自己的文档和规范，Auditor 审核格式合规
+- 通过定时扫描（Auditor 按需创建 Skill）自动化合规检查
+- 减少各 Agent 负担，让他们专注自己的核心工作
+
+### 核心原则
+
+```
+各 Agent → 专注内容质量（不需要自检格式合规）
+Auditor → 定义格式要求 + 自动扫描检查合规（不干预内容创作）
+```
+
+### 分工
+
+| 谁 | 管什么 | 不管什么 |
+|----|--------|---------|
+| 各 Agent | 自己文档的内容质量 | 不需要自检格式是否完全合规 |
+| Auditor | 定义格式要求 + 自动扫描检查合规 | 不干预各 Agent 的内容创作 |
+
+### Auditor 格式要求示例
+- 需求文档必须包含 R-xxx 编号
+- 讨论记录必须按 `discussion-format.md` 格式
+- 日志必须 newest first
+- 提交 message 必须带 scope (R-xxx)
+
+### Auditor 后续工作（Auditor 自行安排）
+- 创建文档完整性扫描 Skill
+- 创建格式合规扫描 Skill
+- 创建交叉引用扫描 Skill
+- 配置定时扫描任务
+- 扫描结果纳入审计报告
+
+### 更新的文件
+- `~/.claude/skills/kouol-auditor/SKILL.md`（新增"委托模型"章节）
+
+---
+
 > 下一个需求完成时，由 🔍 Auditor 执行首次审计并更新记分板。

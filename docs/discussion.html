@@ -1,0 +1,394 @@
+---
+layout: default
+title: 讨论群
+---
+
+<style>
+/* ========================================
+   讨论群页面 — 群聊风格展示
+   ======================================== */
+
+.chat-header {
+  background: linear-gradient(135deg, #4F46E5 0%, #6366F1 100%);
+  color: white;
+  padding: 28px 32px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 16px rgba(79, 70, 229, 0.2);
+}
+
+.chat-header h1 {
+  color: white !important;
+  border: none !important;
+  margin: 0 0 8px !important;
+  font-size: 1.5em !important;
+  font-weight: 700 !important;
+}
+
+.chat-header .subtitle {
+  opacity: 0.85;
+  font-size: 0.9em;
+}
+
+.chat-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px 0;
+}
+
+/* 话题分隔 */
+.topic-divider {
+  display: flex;
+  align-items: center;
+  margin: 32px 0 24px;
+  gap: 16px;
+}
+
+.topic-divider::before,
+.topic-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #E5E7EB, transparent);
+}
+
+.topic-divider span {
+  font-size: 0.82em;
+  color: #6B7280;
+  font-weight: 500;
+  white-space: nowrap;
+  padding: 4px 14px;
+  background: #F3F4F6;
+  border-radius: 20px;
+}
+
+/* 消息行 */
+.message-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+/* 头像 */
+.msg-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* 消息内容区 */
+.msg-body {
+  max-width: calc(100% - 60px);
+  min-width: 0;
+}
+
+/* 发送者名称 */
+.msg-sender {
+  font-size: 0.78em;
+  font-weight: 600;
+  margin-bottom: 5px;
+  padding-left: 4px;
+}
+
+/* 气泡 */
+.msg-bubble {
+  padding: 12px 16px;
+  border-radius: 18px;
+  font-size: 0.93em;
+  line-height: 1.65;
+  word-break: break-word;
+  position: relative;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+
+.msg-bubble p {
+  margin: 0 0 0.5em !important;
+}
+
+.msg-bubble p:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* ========================================
+   Agent 色彩系统
+   ======================================== */
+
+/* 战略者 — 琥珀色 */
+.avatar-strategist { background: #FEF3C7; }
+.bubble-strategist { background: #FFFBEB; border: 1px solid #FDE68A; color: #78350F; }
+.sender-strategist { color: #B45309; }
+
+/* 产品 — 翡翠绿 */
+.avatar-pm { background: #D1FAE5; }
+.bubble-pm { background: #ECFDF5; border: 1px solid #A7F3D0; color: #064E3B; }
+.sender-pm { color: #047857; }
+
+/* 设计师 — 紫罗兰 */
+.avatar-designer { background: #EDE9FE; }
+.bubble-designer { background: #F5F3FF; border: 1px solid #DDD6FE; color: #4C1D95; }
+.sender-designer { color: #6D28D9; }
+
+/* 架构师 — 天蓝色 */
+.avatar-architect { background: #DBEAFE; }
+.bubble-architect { background: #EFF6FF; border: 1px solid #BFDBFE; color: #1E3A5F; }
+.sender-architect { color: #1D4ED8; }
+
+/* 开发者 — 石墨灰 */
+.avatar-developer { background: #F3F4F6; }
+.bubble-developer { background: #F9FAFB; border: 1px solid #E5E7EB; color: #1F2937; }
+.sender-developer { color: #4B5563; }
+
+/* 测试者 — 珊瑚红 */
+.avatar-tester { background: #FEE2E2; }
+.bubble-tester { background: #FEF2F2; border: 1px solid #FECACA; color: #7F1D1D; }
+.sender-tester { color: #DC2626; }
+
+/* 复盘者 — 青蓝 */
+.avatar-reviewer { background: #CFFAFE; }
+.bubble-reviewer { background: #ECFEFF; border: 1px solid #A5F3FC; color: #164E63; }
+.sender-reviewer { color: #0891B2; }
+
+/* 审计者 — 深灰 */
+.avatar-auditor { background: #E5E7EB; }
+.bubble-auditor { background: #F3F4F6; border: 1px solid #D1D5DB; color: #111827; }
+.sender-auditor { color: #374151; }
+
+/* 用户 — 主色 Indigo */
+.avatar-user { background: #EEF2FF; }
+.bubble-user { background: #EEF2FF; border: 1px solid #C7D2FE; color: #312E81; }
+.sender-user { color: #4338CA; }
+
+/* ========================================
+   加载 / 空状态
+   ======================================== */
+
+.chat-loading {
+  text-align: center;
+  padding: 64px 24px;
+  color: #9CA3AF;
+}
+
+.chat-loading .spinner {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  border: 3px solid #E5E7EB;
+  border-top-color: #4F46E5;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   响应式
+   ======================================== */
+@media screen and (max-width: 768px) {
+  .chat-header {
+    padding: 22px 24px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+
+  .chat-header h1 {
+    font-size: 1.25em !important;
+  }
+
+  .msg-avatar {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .msg-bubble {
+    font-size: 0.9em;
+    padding: 10px 14px;
+  }
+
+  .msg-body {
+    max-width: calc(100% - 52px);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .chat-header {
+    padding: 18px 20px;
+    margin-bottom: 20px;
+  }
+
+  .msg-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .message-row {
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .msg-bubble {
+    font-size: 0.88em;
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+}
+</style>
+
+<div class="chat-container" id="chatContainer">
+  <div class="chat-loading">
+    <div class="spinner"></div>
+    <div>加载讨论记录...</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+// Agent 配置
+const AGENTS = {
+  'Strategist': { emoji: '🎯', name: '战略者' },
+  'PM':         { emoji: '📋', name: '产品' },
+  'Designer':   { emoji: '🎨', name: '设计师' },
+  'Architect':  { emoji: '🏗️', name: '架构师' },
+  'Developer':  { emoji: '💻', name: '开发者' },
+  'Tester':     { emoji: '🧪', name: '测试者' },
+  'Reviewer':   { emoji: '📝', name: '复盘者' },
+  'Auditor':    { emoji: '🔍', name: '审计者' },
+  '用户':       { emoji: '👤', name: '用户' }
+};
+
+// 解析讨论文件
+function parseDiscussion(text) {
+  const lines = text.split('\n');
+  const messages = [];
+  let currentAgent = null;
+  let currentLines = [];
+
+  const flushMessage = () => {
+    if (currentAgent && currentLines.length > 0) {
+      messages.push({
+        type: 'message',
+        agent: currentAgent,
+        content: currentLines.join('\n').trim()
+      });
+    }
+    currentAgent = null;
+    currentLines = [];
+  };
+
+  for (const line of lines) {
+    // 跳过 front matter
+    if (line.startsWith('---')) continue;
+    if (line.match(/^\w+:\s*.+$/) && !currentAgent) continue;
+
+    // 检测发言者行
+    const speakerMatch = line.match(/^(?:🎯|📋|🎨|🏗️|💻|🧪|📝|🔍|👤)?\s*([\w一-鿿]+)\s*:\s*$/);
+
+    if (speakerMatch) {
+      flushMessage();
+      currentAgent = speakerMatch[1];
+    } else if (line.startsWith('## ')) {
+      flushMessage();
+      messages.push({
+        type: 'topic',
+        title: line.replace(/^##\s*/, '')
+      });
+    } else if (line.trim() === '') {
+      continue;
+    } else if (currentAgent) {
+      currentLines.push(line);
+    }
+  }
+
+  flushMessage();
+  return messages;
+}
+
+// 渲染聊天界面
+function renderChat(messages, title) {
+  const container = document.getElementById('chatContainer');
+
+  let html = `
+    <div class="chat-header">
+      <h1>${title}</h1>
+      <div class="subtitle">💬 讨论记录 · 只读模式</div>
+    </div>
+  `;
+
+  for (const msg of messages) {
+    if (msg.type === 'topic') {
+      html += `<div class="topic-divider"><span>${msg.title}</span></div>`;
+      continue;
+    }
+
+    const agentKey = msg.agent;
+    const config = AGENTS[agentKey] || { emoji: '👤', name: agentKey };
+    const cssKey = agentKey.toLowerCase();
+
+    html += `
+      <div class="message-row">
+        <div class="msg-avatar avatar-${cssKey}">${config.emoji}</div>
+        <div class="msg-body">
+          <div class="msg-sender sender-${cssKey}">${config.name}</div>
+          <div class="msg-bubble bubble-${cssKey}">${marked.parse(msg.content)}</div>
+        </div>
+      </div>
+    `;
+  }
+
+  container.innerHTML = html;
+}
+
+// 加载文件
+const params = new URLSearchParams(window.location.search);
+const reqId = params.get('r') || 'R-003';
+const fileUrl = `{{ site.baseurl }}/_discussions/${reqId}.md`;
+
+fetch(fileUrl)
+  .then(response => {
+    if (!response.ok) throw new Error(`找不到 ${reqId} 的讨论记录`);
+    return response.text();
+  })
+  .then(text => {
+    // 解析 front matter
+    const fmMatch = text.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+    let title = `${reqId} 讨论群`;
+
+    if (fmMatch) {
+      const fmText = fmMatch[1];
+      text = fmMatch[2];
+      const titleMatch = fmText.match(/title:\s*(.+)/);
+      const reqMatch = fmText.match(/requirement:\s*(.+)/);
+      if (titleMatch) title = titleMatch[1].trim();
+      else if (reqMatch) title = `${reqMatch[1].trim()} 讨论群`;
+    }
+
+    const messages = parseDiscussion(text);
+    if (messages.length === 0) {
+      throw new Error('讨论记录为空');
+    }
+    renderChat(messages, title);
+  })
+  .catch(err => {
+    document.getElementById('chatContainer').innerHTML = `
+      <div class="chat-loading">
+        <div style="font-size: 48px; margin-bottom: 16px;">💬</div>
+        <div>${err.message}</div>
+        <div style="margin-top: 12px; font-size: 0.85em;">
+          <a href="{{ site.baseurl }}/requirements.html">← 返回需求列表</a>
+        </div>
+      </div>
+    `;
+  });
+</script>

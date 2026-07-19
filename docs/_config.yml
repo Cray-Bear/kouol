@@ -19,6 +19,9 @@ exclude:
   - node_modules
   - vendor
 
+include:
+  - _discussions
+
 defaults:
   - scope:
       path: ""

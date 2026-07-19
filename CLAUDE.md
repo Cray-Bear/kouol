@@ -51,6 +51,7 @@ doc/
         ├── release.md           # 发布文档
         ├── review.md            # 复盘文档
         ├── log.md               # ⭐ 开发日志（newest first）
+        ├── discussion.md        # 💬 讨论记录（所有 Agent 间的讨论，用户审阅）
         ├── T-001.md             # 任务（编号全局连续）
         ├── T-002.md
         └── assets/              # 资源（截图、设计稿）
@@ -92,7 +93,7 @@ doc/
 📋 R-xxx (已批准) ─── 写 technical.md（技术方案）
    ↓ 拆解              ─── 写 test.md（测试计划）
 🔨 T-xxx (待办) ← 在 R-xxx/ 内
-   ↓ 执行（log.md 实时记录，链接 T-xxx）
+   ↓ 执行（log.md 实时记录，discussion.md 记录讨论）
 ✔️ T-xxx (完成)
    ↓ 发布
 📦 release.md (发布记录)
@@ -100,6 +101,8 @@ doc/
 ✔️ R-xxx (完成)
    ↓ 复盘
 📝 review.md (复盘总结)
+   ↓ 审计
+🔍 Auditor 审计报告 + 记分板更新
 ```
 
 ### ⚠️ 设计确认（强约定）
@@ -227,9 +230,15 @@ hvigorw clean
 ### 核心文档
 | 文档 | 路径 | 说明 |
 |------|------|------|
-| 设计宪法 | `doc/design-constitution.md` | 最高设计准则，所有设计决策必须遵守 |
-| 组件规范速查 | `doc/design-rules.md` | 色彩/字体/间距/组件的速查表 |
-| 设计师 Skill | `~/.claude/skills/kouol-designer/SKILL.md` | 设计师的执行手册（全局 Skill） |
+| 治理手册 | `doc/governance.md` | 七权协作模型 |
+| 生命周期 | `doc/lifecycle.md` | 需求全生命周期甘特图 |
+| 协作流程 | `doc/collaboration-guide.md` | 交接协议 + 各角色检查清单 |
+| 编码规范 | `doc/coding-standards.md` | ArkTS/ArkUI 编码标准 |
+| 测试流程 | `doc/testing-workflow.md` | 测试开发流程 |
+| 设计宪法 | `doc/design-constitution.md` | 最高设计准则 |
+| 设计规则 | `doc/design-rules.md` | 组件规范速查 |
+| 讨论格式 | `doc/discussion-format.md` | 讨论记录标准格式 |
+| 记分板 | `doc/scorecard.md` | Agent 绩效记录 |
 
 ### 什么时候调用设计师
 - 任何涉及**页面设计、修改、创建**的任务
