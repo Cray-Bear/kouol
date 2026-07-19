@@ -19,6 +19,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **边做边记** —— 每个操作实时记录到需求的日志里
 - **中断可恢复** —— 打开 log.md 就知道做到哪了
 
+### 治理结构：七权协作模型
+
+本项目采用七权协作模型（策/议/行/审/督 + 用户 + 记分板），**没有任何一个角色可以独自决定所有事情**。
+
+| 权 | 角色 | 核心职责 |
+|----|------|---------|
+| 策 | 🎯 Strategist | 产生想法、设定目标 |
+| 议 | 🏗️ Architect + 🎨 Designer + 📋 PM | 三方讨论形成方案 |
+| 行 | 💻 Developer | 按方案实施 |
+| 审 | 🧪 Tester + 📝 Reviewer | 验证 + 复盘 |
+| 督 | 🔍 Auditor | 审计所有 Agent |
+
+完整手册见 `doc/governance.md`，Agent Skill 文件见 `~/.claude/skills/kouol-*/SKILL.md`。
+
 ### 文档结构
 
 ```
