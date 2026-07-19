@@ -16,8 +16,27 @@ $ErrorActionPreference = "Stop"
 # 项目根目录（硬编码，避免 $PSScriptRoot 在某些环境下为 null）
 $PROJECT_ROOT = "D:\Users\beart\code\kouol"
 
-# DevEco Studio 安装路径
-$DEVETOOLS   = "D:\Program Files\Huawei\DevEco Studio"
+# --- 加载本地环境配置 ---
+# env/.env 包含本机路径和敏感信息（不提交），env/.env.example 是模板
+$envFile = Join-Path $PROJECT_ROOT "env\.env"
+if (Test-Path $envFile) {
+    Get-Content $envFile | ForEach-Object {
+        $line = $_.Trim()
+        if ($line -and -not $line.StartsWith("#")) {
+            $idx = $line.IndexOf("=")
+            if ($idx -gt 0) {
+                $key = $line.Substring(0, $idx).Trim()
+                $val = $line.Substring($idx + 1).Trim()
+                if ($val) { [System.Environment]::SetEnvironmentVariable($key, $val, "Process") }
+            }
+        }
+    }
+} else {
+    Write-Host "WARNING: env\.env not found. Copy env\.env.example to env\.env and fill in values." -ForegroundColor Yellow
+}
+
+# DevEco Studio 安装路径（优先从 env/.env 读取，兜底默认值）
+$DEVETOOLS   = if ($env:DEVETOOLS_HOME) { $env:DEVETOOLS_HOME } else { "D:\Program Files\Huawei\DevEco Studio" }
 $SDK_TOOLS   = "$DEVETOOLS\sdk\default\openharmony\toolchains"
 $OHPM_BIN    = "$DEVETOOLS\tools\ohpm\bin"
 $NODE_BIN    = "$DEVETOOLS\tools\node"
@@ -32,6 +51,8 @@ $ABILITY_NAME = "EntryAbility"
 
 # ============================================================================
 
+# DEVECO_SDK_HOME 由 env/.env 加载；如未配置则兜底
+if (-not $env:DEVECO_SDK_HOME) { $env:DEVECO_SDK_HOME = "$DEVETOOLS\sdk" }
 $env:PATH = "$SDK_TOOLS;$OHPM_BIN;$NODE_BIN;$env:PATH"
 
 # --- 构建 ---

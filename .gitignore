@@ -11,3 +11,6 @@
 **/.test
 /.appanalyzer
 /.claude
+
+# 本地环境配置（含敏感信息，绝不提交）
+env/.env
