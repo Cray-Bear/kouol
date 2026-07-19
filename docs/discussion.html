@@ -353,7 +353,7 @@ function renderChat(messages, title) {
 // 加载文件
 const params = new URLSearchParams(window.location.search);
 const reqId = params.get('r') || 'R-003';
-const fileUrl = `{{ site.baseurl }}/_discussions/${reqId}.md`;
+const fileUrl = `{{ site.baseurl }}/_discussions/${reqId}.txt`;
 
 fetch(fileUrl)
   .then(response => {
