@@ -17,11 +17,11 @@ gantt
     a1 战略者: 第一性原理分析     ,a1,after a0,1d
 
     section 📝 议 · 设计
-    a2 PM: 需求文档              ,a2,after a1,1d
+    a2 Strat: 需求文档           ,a2,after a1,1d
     a3 Designer: 设计确认        ,a3,after a2,1d
     a4 Architect: 技术方案       ,a4,after a1,2d
     a5 三方讨论                  ,a5,after a4,1d
-    a6 PM: 任务拆解              ,a6,after a5,1d
+    a6 Strat: 任务拆解           ,a6,after a5,1d
 
     section 🔨 行 · 实施
     b1 Developer: 编码实施       ,b1,after a6,3d
@@ -31,7 +31,7 @@ gantt
     c1 Tester: 功能验证          ,c1,after b1,2d
     c2 Reviewer: 代码审查        ,c2,after b1,2d
     c3 Developer: 修复            ,c3,after c1,1d
-    c4 PM: 验收                  ,c4,after c3,1d
+    c4 Strat: 验收               ,c4,after c3,1d
 
     section 📦 发布
     d1 Developer: 发布记录       ,d1,after c4,1d
@@ -46,11 +46,10 @@ gantt
 
 | Agent | 权 | 💭策 | 📝议 | 🔨行 | 🧪审 | 📦发布 | 🔍督 | 合计 |
 |-------|-----|:----:|:----:|:----:|:----:|:-----:|:----:|------|
-| 🎯 Strategist | 策 | ★★★★★ | — | — | — | — | ★ | 20% |
-| 📋 PM | 议 | ★ | ★★★★★ | — | ★ | — | ★ | 24% |
+| 🎯 Strategist · 产品 | 策+议 | ★★★★★ | ★★★★★ | — | ★ | — | ★ | 44% |
 | 🎨 Designer | 议 | — | ★★★★ | — | — | — | — | 16% |
 | 🏗️ Architect | 议 | ★ | ★★★★★ | ★ | ★ | — | ★ | 32% |
-| 💻 Developer | 行 | — | — | ★★★★★ | ★★ | ★ | — | 32% |
+| 💻 Developer · 运维 | 行 | — | — | ★★★★★ | ★★ | ★ | — | 32% |
 | 🧪 Tester | 审 | — | — | — | ★★★★★ | — | ★ | 24% |
 | 📝 Reviewer | 审 | — | — | — | ★★★★ | — | ★ | 20% |
 | 🔍 Auditor | 督 | — | — | — | — | — | ★★★★★ | 20% |
@@ -67,15 +66,14 @@ gantt
 💭 I-xxx (想法)
    ↓ 🎯 战略者 · 隐含假设 + 公理化推导 + 三洽检验
 📝 requirement.md (初稿)
-   ↓ 📋 PM 定义验收标准
+   ↓ 🎯 Strategist 定义验收标准 + 任务拆解
    ↓ 🎨 Designer 设计确认 ← 不可跳过
    ↓ 🏗️ Architect 技术方案
-   ↓ 📋🎨🏗️ 三方讨论 → discussion.md ← 用户审阅
-   ↓ 📋 PM 任务拆解
+   ↓ 🎯🎨🏗️ 三方讨论 → discussion.md ← 用户审阅
 🔨 T-xxx → log.md 实时记录 + discussion.md 讨论留痕
-   ↓ 💻 Developer 编码
+   ↓ 💻 Developer 编码 + 本地验证 + 部署
    ↓ 🧪 Tester 验证 + 📝 Reviewer 审查（并行）
-   ↓ 📋 PM 验收
+   ↓ 🎯 Strategist 验收
 📦 release.md
    ↓ 🔍 Auditor 审计 → scorecard.md
 ✔️ R-xxx (完成) → review.md (复盘)
@@ -97,11 +95,11 @@ gantt
 
 | 步骤 | 执行者 | 产出 | 说明 |
 |------|--------|------|------|
-| 需求文档 | 📋 PM | `R-xxx/requirement.md` | what + why + 验收标准 |
+| 需求文档 | 🎯 Strategist | `R-xxx/requirement.md` | what + why + 验收标准 |
 | 设计确认 | 🎨 Designer | 设计稿 / "无需设计"说明 | **不可跳过** |
 | 技术方案 | 🏗️ Architect | `R-xxx/technical.md` | how + 架构 + 风险 |
-| 三方讨论 | 📋🎨🏗️ | `R-xxx/discussion.md` | 用户审阅所有发言 |
-| 任务拆解 | 📋 PM | `R-xxx/T-xxx.md` × N | 原子任务 + 验收标准 |
+| 三方讨论 | 🎯🎨🏗️ | `R-xxx/discussion.md` | 用户审阅所有发言 |
+| 任务拆解 | 🎯 Strategist | `R-xxx/T-xxx.md` × N | 原子任务 + 验收标准 |
 
 ### 🔨 行 · 实施阶段
 
@@ -117,7 +115,7 @@ gantt
 | 功能验证 | 🧪 Tester | `R-xxx/test.md` | 逐条对照验收标准 |
 | 代码审查 | 📝 Reviewer | `R-xxx/review.md` | 代码质量 + 最佳实践 |
 | 修复 | 💻 Developer | 代码变更 | 如有 Bug / 审查意见 |
-| 验收 | 📋 PM | 验收结论 | 确认所有标准通过 |
+| 验收 | 🎯 Strategist | 验收结论 | 确认所有标准通过 |
 
 ### 📦 发布阶段
 
@@ -130,7 +128,7 @@ gantt
 | 步骤 | 执行者 | 产出 | 说明 |
 |------|--------|------|------|
 | 审计报告 | 🔍 Auditor | 审计报告 + 记分板更新 | 独立于议/行/审 |
-| 复盘 | 📋 PM | `R-xxx/review.md` | 踩坑 + 改进建议 |
+| 复盘 | 📝 Reviewer | `R-xxx/review.md` | 踩坑 + 改进建议 |
 | 反馈闭环 | 🔍 Auditor → 🎯 Strategist | 系统性问题 → 新想法 | 治理循环闭合 |
 
 ---
@@ -141,15 +139,15 @@ gantt
 
 | 文件 | 产出者 | 必须 |
 |------|--------|------|
-| `README.md` | 📋 PM | ✅ |
-| `requirement.md` | 📋 PM | ✅ |
+| `README.md` | 🎯 Strategist | ✅ |
+| `requirement.md` | 🎯 Strategist | ✅ |
 | `technical.md` | 🏗️ Architect | ✅ |
-| `discussion.md` | 📋🎨🏗️💻 | ✅ 有讨论就必须有 |
+| `discussion.md` | 🎯🎨🏗️💻 | ✅ 有讨论就必须有 |
 | `test.md` | 🧪 Tester | ✅ |
 | `review.md` | 📝 Reviewer | ✅ |
 | `release.md` | 💻 Developer | ✅ |
 | `log.md` | 💻 Developer | ✅ |
-| `T-xxx.md` × N | 📋 PM | ✅ |
+| `T-xxx.md` × N | 🎯 Strategist | ✅ |
 | `assets/` | 🎨 Designer | 按需 |
 
 ---

@@ -1,28 +1,28 @@
 # 测试开发流程 (Testing Workflow)
 
 > **从接收任务到验收通过的完整流程。**
-> 设计者：🔍 Auditor | 执行者：🧪 Tester + 💻 Developer + 📋 PM
+> 设计者：🔍 Auditor | 执行者：🧪 Tester + 💻 Developer + 🎯 Strategist
 
 ---
 
 ## 一、流程总览
 
 ```
-📋 PM 定义验收标准
+🎯 Strategist 定义验收标准
    ↓
 🧪 Tester 编写测试用例
    ↓
-💻 Developer 完成编码
+💻 Developer 完成编码 + 部署验证
    ↓
 🧪 Tester 执行测试
    ↓
-   ├─ ✅ 通过 → 📋 PM 验收
+   ├─ ✅ 通过 → 🎯 Strategist 验收
    ├─ ❌ 不通过 → 💻 Developer 修复 → 🧪 Tester 复测
    └─ ⚠️ 有条件通过 → 记录 + 跟踪
    ↓
 📝 Reviewer 代码审查（与测试并行）
    ↓
-📋 PM 最终验收
+🎯 Strategist 最终验收
 ```
 
 ---
@@ -46,8 +46,9 @@
 | 自测 | 提交前对照验收标准自测 |
 | 修复 Bug | 根据测试报告修复问题 |
 | 回归验证 | 修复后自测确认不影响其他功能 |
+| 部署验证 | push 后 curl 验证关键 URL 返回 200 |
 
-### 📋 PM（产品）
+### 🎯 Strategist（战略者 · 产品）
 
 | 职责 | 说明 |
 |------|------|
@@ -204,10 +205,10 @@
 ```
 Tester 说有问题 ↔ Developer 说不是问题
    ↓
-📋 PM 仲裁（基于验收标准）
+🎯 Strategist 仲裁（基于验收标准）
    ↓
    ├─ 验收标准有说 → 按标准执行
-   └─ 验收标准没说 → PM 补充标准 → 按新标准执行
+   └─ 验收标准没说 → Strategist 补充标准 → 按新标准执行
    ↓
 讨论记录到 discussion.md
 ```
@@ -287,8 +288,8 @@ Tester 说有问题 ↔ Developer 说不是问题
 
 | 上游 | 衔接点 | 下游 |
 |------|--------|------|
-| 📋 PM 验收标准 | 测试用例基于验收标准 | 💻 Developer 修复 Bug |
-| 💻 Developer 提交代码 | 接收代码开始测试 | 📋 PM 最终验收 |
+| 🎯 Strategist 验收标准 | 测试用例基于验收标准 | 💻 Developer 修复 Bug |
+| 💻 Developer 提交代码 | 接收代码开始测试 | 🎯 Strategist 最终验收 |
 | 🎨 Designer 设计稿 | 设计还原度检查 | 📝 Reviewer 代码审查（并行） |
 | | | 🔍 Auditor 审计报告 |
 

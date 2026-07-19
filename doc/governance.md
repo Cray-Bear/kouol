@@ -53,9 +53,9 @@
 
 ---
 
-### 🏗️ 议 · 立法权 (Architect + Designer + PM)
+### 🏗️ 议 · 立法权 (Architect + Designer + Strategist)
 
-由三个子角色组成，**必须三方讨论确认后方案才生效**。
+由三个子角色组成，**必须三方讨论确认后方案才生效**。Strategist 代表产品视角参与。
 
 #### 🏗️ Architect · 架构师
 
@@ -64,7 +64,7 @@
 | **职责** | 技术方案设计、架构决策、可行性评估 |
 | **产出** | technical.md（技术方案）、架构决策记录 |
 | **权力** | 否决不可行的想法；决定技术选型 |
-| **约束** | 方案必须经 Designer 和 PM 确认 |
+| **约束** | 方案必须经 Designer 和 Strategist 确认 |
 
 #### 🎨 Designer · 设计师 (kouol-designer)
 
@@ -75,11 +75,11 @@
 | **权力** | 否决不符合设计规范的实现；要求返工 |
 | **约束** | 设计必须考虑 ArkUI 实现约束 |
 
-#### 📋 PM · 产品整理
+#### 🎯 Strategist · 战略者（代表产品视角）
 
 | 维度 | 说明 |
 |------|------|
-| **职责** | 需求整理、验收标准定义、任务拆解 |
+| **职责** | 需求定义、验收标准确认、任务拆解 |
 | **产出** | requirement.md、验收标准、T-xxx 任务列表 |
 | **权力** | 否决需求不清晰的方案；要求补充验收标准 |
 | **约束** | 验收标准必须可量化、可验证 |
@@ -94,11 +94,11 @@
 ### 方案
 - Architect 提议：方案 A — [理由]
 - Designer 提议：方案 B — [理由]
-- PM 补充：验收标准应该是 [xxx]
+- Strategist 补充：验收标准应该是 [xxx]
 
 ### 决议
 选择方案 X，因为 [原因]。
-Architect 同意 ✅ | Designer 同意 ✅ | PM 同意 ✅
+Architect 同意 ✅ | Designer 同意 ✅ | Strategist 同意 ✅
 （如有反对意见，记录在此）
 ```
 
@@ -322,14 +322,15 @@ Architect 同意 ✅ | Designer 同意 ✅ | PM 同意 ✅
 
 | 角色 | Skill 文件路径 | 状态 |
 |------|---------------|------|
-| 🎯 Strategist | `~/.claude/skills/kouol-strategist/SKILL.md` | ✅ 已创建 |
+| 🎯 Strategist · 产品 | `~/.claude/skills/kouol-strategist/SKILL.md` | ✅ 已创建（含 PM） |
 | 🏗️ Architect | `~/.claude/skills/kouol-architect/SKILL.md` | ✅ 已创建 |
 | 🎨 Designer | `~/.claude/skills/kouol-designer/SKILL.md` | ✅ 已有 |
-| 📋 PM | `~/.claude/skills/kouol-pm/SKILL.md` | ✅ 已创建 |
-| 💻 Developer | `~/.claude/skills/kouol-developer/SKILL.md` | ✅ 已创建 |
+| 💻 Developer · 运维 | `~/.claude/skills/kouol-developer/SKILL.md` | ✅ 已创建（含运维） |
 | 🧪 Tester | `~/.claude/skills/kouol-tester/SKILL.md` | ✅ 已创建 |
 | 📝 Reviewer | `~/.claude/skills/kouol-reviewer/SKILL.md` | ✅ 已创建 |
 | 🔍 Auditor | `~/.claude/skills/kouol-auditor/SKILL.md` | ✅ 已创建 |
+
+> ~~📋 PM~~ — 已合并至 🎯 Strategist（2026-07-19）
 
 ---
 

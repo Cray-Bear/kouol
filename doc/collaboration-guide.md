@@ -13,27 +13,26 @@
    👤 用户 → 选择哪些值得做
       ↓
 📝 议 · 设计
-   📋 PM → 需求文档 (requirement.md)
+   🎯 Strategist → 需求文档 (requirement.md) + 任务拆解 (T-xxx)
    🎨 Designer → 设计确认 / 设计稿
    🏗️ Architect → 技术方案 (technical.md)
-   📋🎨🏗️ → 三方讨论 → discussion.md
-   📋 PM → 任务拆解 (T-xxx)
+   🎯🎨🏗️ → 三方讨论 → discussion.md
       ↓
 🔨 行 · 实施
-   💻 Developer → 编码 + log.md
+   💻 Developer → 编码 + 本地验证 + 部署 + 线上验证 + log.md
       ↓
 🧪 审 · 验证
    🧪 Tester → 功能测试 (test.md)
    📝 Reviewer → 代码审查 (review.md)
    💻 Developer → 修复（如有）
-   📋 PM → 验收
+   🎯 Strategist → 验收（基于验收标准）
       ↓
 📦 发布
    💻 Developer → 发布记录 (release.md)
       ↓
 🔍 督 · 审计
    🔍 Auditor → 审计报告 + 记分板
-   📋 PM → 复盘 (review.md)
+   📝 Reviewer → 复盘 (review.md)
 ```
 
 ---
@@ -60,16 +59,16 @@
 
 | 从 → 到 | 交接内容 | 交接方式 |
 |---------|---------|---------|
-| 🎯 → 📋 | I-xxx（想法） | 用户确认后，PM 读取 I-xxx |
-| 📋 → 🎨 | requirement.md（初稿） | PM 完成后，Designer 读取 |
+| 🎯 → 🎯 | I-xxx → requirement.md | 用户确认后，Strategist 产出需求 |
+| 🎯 → 🎨 | requirement.md（初稿） | Strategist 完成后，Designer 读取 |
 | 🎨 → 🏗️ | 设计确认 / 设计稿 | Designer 确认后，Architect 开始方案 |
 | 🏗️ → 💻 | technical.md（技术方案） | 三方讨论后，Developer 读取 |
-| 💻 → 🧪 | 代码 + log.md | Developer 提交后，Tester 开始测试 |
+| 💻 → 🧪 | 代码 + 部署验证通过 | Developer 部署后，Tester 开始测试 |
 | 💻 → 📝 | 代码 + log.md | Developer 提交后，Reviewer 开始审查 |
 | 🧪 → 💻 | test.md（测试报告） | 有 Bug 时，Developer 读取并修复 |
 | 📝 → 💻 | review.md（复盘报告） | 有改进建议时，Developer 读取 |
-| 💻 → 📋 | 修复后的代码 | Developer 修复后，PM 验收 |
-| 📋 → 💻 | 验收通过 | PM 确认后，Developer 写 release.md |
+| 💻 → 🎯 | 修复后的代码 | Developer 修复后，Strategist 验收 |
+| 🎯 → 💻 | 验收通过 | Strategist 确认后，Developer 写 release.md |
 | 全员 → 🔍 | 所有文档 | Auditor 读取全部文档进行审计 |
 | 🔍 → 🎯 | 审计报告 | Auditor 反馈系统性问题，触发新想法 |
 
@@ -81,15 +80,15 @@
 
 **触发：** 需求进入"议"阶段
 
-**参与者：** 📋 PM + 🎨 Designer + 🏗️ Architect
+**参与者：** 🎯 Strategist + 🎨 Designer + 🏗️ Architect
 
 **流程：**
 ```
-1. 📋 PM 主持，说明需求目标和验收标准
+1. 🎯 Strategist 主持，说明需求目标和验收标准
 2. 🎨 Designer 从视觉/体验角度提建议
 3. 🏗️ Architect 从技术角度提方案
 4. 三方讨论，达成共识
-5. 📋 PM（或任意一方）记录到 discussion.md
+5. 任意一方记录到 discussion.md
 6. 如有分歧 → 记录各方立场 → 提交用户裁决
 ```
 
@@ -116,7 +115,7 @@
 ```
 1. 🧪 Tester 记录 Bug + 复现步骤
 2. 💻 Developer 评估：是 Bug 还是设计如此？
-3. 如不一致 → 📋 PM 仲裁（基于验收标准）
+3. 如不一致 → 🎯 Strategist 仲裁（基于验收标准）
 4. 记录到 discussion.md
 ```
 
@@ -128,7 +127,7 @@
 ```
 1. 🎨 Designer 完成设计
 2. 🏗️ Architect 评估技术可行性
-3. 📋 PM 评估用户体验
+3. 🎯 Strategist 评估用户体验
 4. 如有问题 → 讨论 → 修改 → 再评审
 5. 记录到 discussion.md
 ```
@@ -191,9 +190,6 @@
 - [ ] 想法写入了 `doc/ideas/I-xxx.md`？
 - [ ] 给出了优先级建议？
 - [ ] 更新了 `doc/ideas/README.md` 索引？
-
-### 📋 PM 工作检查
-
 - [ ] 需求文档写了 what + why？
 - [ ] 验收标准可量化、可验证？
 - [ ] 范围边界明确了（包含什么、不包含什么）？
@@ -227,6 +223,10 @@
 - [ ] log.md 实时记录？
 - [ ] 自测通过了？
 - [ ] 提交格式正确？
+- [ ] 博客变更本地验证了？（jekyll serve）
+- [ ] 部署后 curl 验证关键 URL 返回 200？
+- [ ] 通知设计验收视觉效果？
+- [ ] 通知测试验收内容正确性？
 
 ### 🧪 Tester 工作检查
 
@@ -281,7 +281,7 @@
 
 | 文档 | 用途 | 维护者 |
 |------|------|--------|
-| `doc/governance.md` | 治理手册（七权模型） | 🔍 Auditor |
+| `doc/governance.md` | 治理手册（六权模型） | 🔍 Auditor |
 | `doc/lifecycle.md` | 需求全生命周期 | 🔍 Auditor |
 | `doc/coding-standards.md` | 编码规范 | 🔍 Auditor |
 | `doc/testing-workflow.md` | 测试开发流程 | 🔍 Auditor |
@@ -290,7 +290,7 @@
 | `doc/discussion-format.md` | 讨论记录格式 | 🔍 Auditor |
 | `doc/scorecard.md` | 记分板 | 🔍 Auditor |
 | `doc/ideas/I-xxx.md` | 想法 | 🎯 Strategist |
-| `doc/requirements/R-xxx/` | 需求目录 | 📋 PM |
+| `doc/requirements/R-xxx/` | 需求目录 | 🎯 Strategist |
 
 ---
 

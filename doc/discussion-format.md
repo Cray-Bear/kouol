@@ -18,10 +18,10 @@ doc/requirements/R-xxx/discussion.md
 
 | 类型 | 触发 | 示例 |
 |------|------|------|
-| 三方讨论 | Architect + Designer + PM 讨论方案 | 组件选型、交互方式、验收标准 |
+| 三方讨论 | Architect + Designer + Strategist 讨论方案 | 组件选型、交互方式、验收标准 |
 | 复议请求 | Developer/Reviewer 发现方案问题 | 技术不可行、需求有歧义 |
 | 跨角色反馈 | Tester → Developer, Reviewer → Developer | Bug 争议、改进建议分歧 |
-| 需求澄清 | PM ↔ 用户 ↔ Architect | 验收标准不明确、范围边界模糊 |
+| 需求澄清 | Strategist ↔ 用户 ↔ Architect | 验收标准不明确、范围边界模糊 |
 | 设计评审 | Designer ↔ Architect | 视觉方案 vs 技术约束 |
 
 ## 记录格式
@@ -43,7 +43,7 @@ doc/requirements/R-xxx/discussion.md
 **🎨 Designer：**
 {立场和理由}
 
-**📋 PM：**
+**🎯 Strategist：**
 {立场和理由}
 
 ### 结论
@@ -57,7 +57,7 @@ doc/requirements/R-xxx/discussion.md
 不是每次讨论都有三方。按实际参与方记录：
 
 - 两方讨论：只记录两个角色
-- Developer 提请复议：Developer + Architect（+ PM 如果涉及需求）
+- Developer 提请复议：Developer + Architect（+ Strategist 如果涉及需求）
 - Tester 反馈 Bug：Tester + Developer
 - 设计评审：Designer + Architect
 
@@ -95,7 +95,7 @@ discussion.md 顶部维护一个讨论索引：
 
 | # | 日期 | 类型 | 参与方 | 结论 |
 |---|------|------|--------|------|
-| 1 | 07-19 | 三方讨论 | Arch + Des + PM | 采用方案 A |
+| 1 | 07-19 | 三方讨论 | Arch + Des + Strat | 采用方案 A |
 | 2 | 07-19 | 复议 | Dev + Arch | 改用 AppStorage |
 ```
 
