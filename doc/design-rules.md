@@ -19,8 +19,8 @@
 | p002 | 商品详情 Product Detail | 420 |
 | p003 | 购物车 Cart | 840 |
 | p004 | 我的 Profile | 1260 |
-| p005 | 登录 Login | 1680 |
-| p006 | 注册 Register | 2100 |
+| p005 | 登录/注册 Login & Register | 1680 |
+| p006 | ~~注册 Register~~ [废弃] | 2100 |
 | p007 | 确认订单 Checkout | 2520 |
 | p008 | 收货地址 Address | 2940 |
 | p009 | 支付 Payment | 3360 |
